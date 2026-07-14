@@ -86,3 +86,20 @@ print ("The new extended list is: ", street_foods_1)
 # 3rd way using append (Ginagamit for nested lsit)
 street_foods_1.append(street_foods_2)
 print ("The appended list is: ", street_foods_1)
+
+
+# Reversing the item order in a list using SORT
+chocolate = ["Kitkat", "Goya", "Toblerone", "Meiji"]
+print ("Original version is: ",chocolate)
+chocolate.reverse()
+print ("Reverse version is: ", chocolate)
+
+# Sorting Items in the list using Sort
+# list.sort () for ascending
+alphabet = ["z","p","c","d","g","a","b"]
+alphabet.sort ()
+print ("Ascending order: ", alphabet)
+
+# list.sort (reverse=True) for descending
+alphabet.sort (reverse=True)
+print ("Descending order: ", alphabet)
