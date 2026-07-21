@@ -122,7 +122,7 @@ print(sample_set_1.isdisjoint(sample_set_2))
 # Output: FALSE
 
 #Subset
-# Yung set one tinitignan kung siya ay nasa set two.
+# Yung set na maliit ay tinitignan kung siya ay nasa set na mas malaki.
 # Small inside Big: ll the small box items are inside the big box.
 numbers = {1,2,3,4,5,6,7,8,9,10}
 even_Numbers = {2,4,6,8,10}
