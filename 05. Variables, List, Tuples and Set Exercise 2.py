@@ -18,9 +18,13 @@ new_student = str(input("Enter the name of student that just arrived: "))
 # Add it.
 students.append(new_student)
 
+
 # Display
 print ("students")
+
 # There are now 4 students.
+students_lenght = len(students)
+print ("There are now" , students_lenght, " students.")
 
 # Ask
 # Who is absent?
@@ -35,7 +39,6 @@ print (absent, "is being removed from the list...")
 print ("The final student's attendance is, ", students)
 
 # Extra challenge:
-
 # Print
 # Student #1:
 print ("Attendance:")
