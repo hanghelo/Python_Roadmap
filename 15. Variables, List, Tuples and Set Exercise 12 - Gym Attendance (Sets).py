@@ -12,7 +12,7 @@ Monday_attendees = {
 Tuesday_attendees = {
     "Anna",
     "Kevin",
-    "Rose,"
+    "Rose",
     "Carl"
     }
 
