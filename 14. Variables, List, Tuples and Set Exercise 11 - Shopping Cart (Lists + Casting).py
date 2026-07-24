@@ -15,7 +15,7 @@ print (items)
 
 price = []
 price.append(item_price)
-print (item_price)
+print (price)
 
 # Repeat three times (manually for now).
 # 2nd
