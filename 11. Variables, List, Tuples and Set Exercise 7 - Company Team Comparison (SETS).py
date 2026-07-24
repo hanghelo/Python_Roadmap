@@ -14,7 +14,7 @@ print ("Common employees ," , common_employees)
 # Employees only in A
 print ("Employees only in A ," , Department_A.difference(Department_B))
 
-# Employees only in B
+# Employees only in BQ
 print ("Employees only in B ," , Department_B.difference(Department_A))
 
 # Employees not shared
@@ -25,7 +25,7 @@ print ("Employees not shared ," , not_shared)
 print("Are they disjoint? " , Department_A.isdisjoint(Department_B))
 
 # Is A subset of B?
-print("Is A subset of B? ," , Department_B.issubset(Department_A))
+print("Is A subset of B? ," , Department_A.issubset(Department_B))
 
 # Is B superset of A?
 print("Is B superset of A? ," , Department_B.issuperset(Department_A))
