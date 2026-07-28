@@ -1,15 +1,17 @@
-print ("===== Student Enrollment =====" \
-"\n 1. Enroll Student" \
-"\n 2. Remove Student" \
-"\n 3. View Students " \
-"\n 4. View Total Students" \
-"\n 5. Exit")
-
-useranswer_menu = int(input("Enter the menu number: "))
 students = []
-i = 0
 
-while (useranswer_menu != 5):
+
+while True:
+
+    print ("===== Student Enrollment =====" \
+            "\n 1. Enroll Student" \
+            "\n 2. Remove Student" \
+            "\n 3. View Students " \
+            "\n 4. View Total Students" \
+            "\n 5. Exit")
+
+    useranswer_menu = int(input("Enter the menu number: "))
+
     try:
         if (useranswer_menu == 1):
             print ("You are entering a Enrollment Menu ... ")
@@ -17,72 +19,139 @@ while (useranswer_menu != 5):
             print ("2 ... ")
             print ("1 ... ")
 
-            user_name = str(input("Enter your name: "))
-            is_name_correct = str(input("Type [Y] for YES or [N] for NO: "))
+            while True:
+                user_name = str(input("Enter your name: "))
+                is_name_correct = str(input("Is the name correct?\nType [Y] for YES or [N] for NO: "))
 
-            if (is_name_correct.lower() == "y"):
-                students.append(user_name)
-                print (user_name, "is now enrolled.")
+                # Menu 1 - Kapag mag-eenter ng ieenroll
+                if (is_name_correct.lower() == "y"):
+                    students.append(user_name)
+                    print (user_name, "is now enrolled.")
+                    print ("Currently enrolled", students, "\n\n")
 
-                for student in students:
-                    print ("Currently enrolled")
-                break
+                    add_new_user = str(input("Do you want to add more? \nType [Y] for YES or [N] for NO: "))
 
-            elif (is_name_correct == "n"):
-                print ("Returning back to menu")
+                    if (add_new_user.lower() == "y"):
+                        # Goes back to asking the name of the user
+                        continue 
 
+                    elif (add_new_user.lower() == "n"):
+                        print ("Returning back to the menu...")
+                        break
+
+                    else:
+                        print ("Invalid input. \nReturning back to the menu...\nNothing is added")
+                        break
+
+                # Menu 1 - Handling if mag-rere-enter ng name or not
+                else:
+                    reenter_name = str(input("Do you want to re-enter? \nType [Y] for YES or [N] for NO: "))
+                    if (reenter_name.lower() == "y"):
+                        continue
+
+                    elif (reenter_name.lower() == "n"):
+                        print ("Returning back to the menu...")
+                        break
+
+                    else:
+                        print ("Invalid input. \nReturning back to the menu...")
+                        break
             else:
-                print ("Only type Y or N next time")
                 break
-
-
-            #Break for the menu 1
-            break
+                    
 
         elif (useranswer_menu == 2):
-            try:
-                to_remove = str(input("Enter the name of student to remove: "))
-                students.remove(to_remove)
-                print (to_remove,"is removed in the list")
+            print ("You are entering the Remove Student Menu ... ")
+            print ("3 ... ")
+            print ("2 ... ")
+            print ("1 ... ")
 
-            except ValueError:
-                print ("Name not found")
+            while True:
+                try:
+                    to_remove = str(input("Enter the student's name to remove: "))
 
-            #Break for the menu 2
-            break
+                    if (len(students) > 0):
+                        print ("Student", to_remove, "is being search in the enrolled list.")
+                        students.remove(to_remove)
+                        print (to_remove, "is removed from the list")
+
+                        remove_again = str(input("Do you want to remove again? \nType [Y] for YES or [N] for NO: "))
+
+                        if (remove_again.lower() == "y"):
+
+                            continue
+
+                        elif (remove_again.lower() == "n"):
+                            print ("Returning back to the menu...")
+                            break
+
+                        else:
+                            print ("Invalid input. \nReturning back to the menu...\nNothing is removed")
+                            break
+
+                    else:
+                        print ("No students is enrolled")
+                        print ("Returning back to the menu...")
+                        break
+
+                except ValueError:
+                    print (to_remove, "is not in the list or you may have typed incorrectly")
+
+                    retry_deleting = str(input("Do you want to re-try removing? \nType [Y] for YES or [N] for NO: "))
+                    if (retry_deleting.lower() == "y"):
+                        continue
+                    
+                    elif (retry_deleting.lower == "n"):
+                        print ("Returning back to the menu...")
+                        break
+
+                    else:
+                        print ("Invalid input. \nReturning back to the menu...\nNothing is removed")
+                        break
+            else:
+                break 
+
+
 
         elif (useranswer_menu == 3):
-            print ("Checking the list of student .....")
+            print ("You are entering the View Students Menu ... ")
+            print ("3 ... ")
+            print ("2 ... ")
+            print ("1 ... ")
 
-            if (len(students) < 0):
-                print ("List of students", students)
-                print (students.count())
-
-                #break for the counting of students
-                break
+            if (len(students) > 0):
+                print ("Here is the currently enrolled students", students, "\nReturning back to the menu...")
 
             else:
-                print ("No enrolled students")
+                print ("No enrolled students.\nReturning back to the menu...")
+                break
 
-            #Break for menu #3
-            break
 
         elif (useranswer_menu == 4):
-            print ("The total students", len(students))
+            print ("You are entering Total Count Students Menu ... ")
+            print ("3 ... ")
+            print ("2 ... ")
+            print ("1 ... ")
 
-        else:
-            print ("You have input a wrong menu number")
-            #Break if wrong menu number
+            
+            if (len(students) > 0):
+                print ("You have total of ", len(students), "\nReturning back to the menu...")
+                
+            else:
+                print ("No enrolled students.\nReturning back to the menu...")
+                break
+
+        elif (useranswer_menu == 5):
+            print ("Exiting the system ... ")
+            print ("3 ... ")
+            print ("2 ... ")
+            print ("1 ... ")
             break
+        else:
+            print ("Invalid keyword. Returning to the menu...") 
 
     except ValueError:
-        print ("Invalid input. You have entered a letter or a symbol. Please Try Again")
+        print ("Invalid keyword. Returning to the menu...")
 
 else:
-    areyousure = str(input ("Are you sure? (Y/N)"))
-
-    while (areyousure.lower == "y"):
-        print ("How can i loop back?")
-
-    else:
-        print ("Thank you")
+    print ("Thank you!")
