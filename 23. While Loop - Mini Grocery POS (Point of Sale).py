@@ -32,14 +32,9 @@ while (i < len(inventory)):
 
 asked_product = str(input("Which product? "))
 
-try:
-    if asked_product.title() in inventory:
-        while True:
-            todo = str(input("What do you want to do? "))
-            print ("""[A] Add to Card \n []""")
 
+if asked_product.title() in inventory:
+    cart.append(asked_product.title())
+    print ("Currently on cart", cart)
 
-
-
-except ValueError:
-    print ("Invalid Input")
+    index_asked_product = inventory.index(asked_product)
