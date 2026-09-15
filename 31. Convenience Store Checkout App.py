@@ -47,21 +47,44 @@ while True:
 
             if propertobuy in products:
                 print (propertobuy + " is available")
-                print ("Adding to Cart")
+                print ("Adding to Cart ...")
 
                 #Adding to Cart
                 cart.append(propertobuy)
-                print (cart)
+                print ("Your current Cart: ", cart)
 
-                #Removing to Cart
+                #Getting the Index of the Item
+                index_propertobuy = products.index(propertobuy)
+                value_propertobuy = prices[index_propertobuy]
+                cart_prices.append(value_propertobuy)
+
+                print ("Current cart amount: ", sum(cart_prices))
+
+                #Removing to Cart and the prices
                 products.remove(propertobuy)
+                prices.pop(index_propertobuy)
+
+                #Printing other Available Product to upsell
+                print ("\nOther Available Product")
                 print(products)
-                
-
-
 
             else:
                 print (propertobuy + " is NOT available")
+
+                wanttocontinue = str(input("Exit? Type YES[Y] or NO[N] :"))
+
+                if wanttocontinue.upper() == "Y":
+                    print ("Returning back to the menu ...")
+                    continue
+
+                elif wanttocontinue.upper() == "N":
+                    print ("Exiting the system")
+                    print ("Thank you!")
+                    break
+
+                else:
+                    print ("Returning back to the menu ...")
+                    continue               
 
 
 
@@ -80,13 +103,13 @@ while True:
     except ValueError:
         print ("You have entered an invalid input")
 
-        wanttocontinue = str(input("Exit? Type YES[Y] or NO[N] "))
+        wanttocontinue = str(input("Exit? Type YES[Y] or NO[N] :"))
 
-        if wanttocontinue.upper == "N":
+        if wanttocontinue.upper() == "Y":
             print ("Returning back to the menu ...")
             continue
 
-        elif wanttocontinue.upper == "Y":
+        elif wanttocontinue.upper() == "N":
             print ("Exiting the system")
             print ("Thank you!")
             break
