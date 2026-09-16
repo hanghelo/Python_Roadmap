@@ -47,4 +47,4 @@ for student in students:
     print (student[0])
     for name in student[1]:
         print ("- ", name)
-    print ()
+    print ()                                    #Everytime na matatapos sa new course, add new line
