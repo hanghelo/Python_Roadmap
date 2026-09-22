@@ -44,7 +44,7 @@ for everyproductandprice in products:
 students = [["BSIT",["David","Alenere"]],["BSCS",["Jaymar","Emman","Patrick"]]]
 
 for student in students:
-    print (student[0])
-    for name in student[1]:
-        print ("- ", name)
-    print ()                                    #Everytime na matatapos sa new course, add new line
+    print (student[0])                          # Only prints index 0 of the student, knowing there are 2 parameters in the list
+    for name in student[1]:                     # Prints each studnetname
+        print ("- ", name)                      # Add "- " before printing each name
+    print ()                                    # Everytime na matatapos sa new course, add new line
