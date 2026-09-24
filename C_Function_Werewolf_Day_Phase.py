@@ -27,4 +27,5 @@ def day_phase():
     function_dotprinting()
     print ()
 
-day_phase()
+if __name__ == "__main__":
+    day_phase()
