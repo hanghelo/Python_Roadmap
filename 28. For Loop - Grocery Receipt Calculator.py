@@ -21,7 +21,7 @@ print ("Total Items: ", len(cart))
 total = 0
 for price in prices:
     total = total + price
-    print (total)
+print (total)
 
     
 
