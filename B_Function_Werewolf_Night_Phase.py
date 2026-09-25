@@ -41,5 +41,6 @@ def night_phase ():
 # Directly run the file → execute it all.
 # Import the file → don't execute the main part (the night phase() function).
 
+# If this file/function/code is directly executed from this main file ..
 if __name__ == "__main__":
     night_phase() 
