@@ -1,102 +1,114 @@
-player_names = []
-
-roles_for_5players = [
+min_roles = [
     "- 🏹 Hunter",
     "- 🔮 Seer",
     "- 🛡️ Bodyguard",
-    "- 👨‍🌾 Villager",
-    "- 🐺 Werewolf"
-]
+    "- 👨‍🌾 Villager"]
 
-roles_for_6players = [
-    "- 🏹 Hunter",
-    "- 🔮 Seer",
-    "- 🛡️ Bodyguard",
-    "- 👨‍🌾 Villager",
-    "- 👨‍🌾 Villager",
-    "- 🐺 Werewolf"
-]
-
-roles_for_7players = [
-    "- 🏹 Hunter",
-    "- 🔮 Seer",
-    "- 🛡️ Bodyguard",
-    "- 👨‍🌾 Villager",
-    "- 👨‍🌾 Villager",
-    "- 🐺 Werewolf",
-    "- 🐺 Werewolf"
-]
-
-##############################################################################3
-# Checking the player count
+##############################################################################
+# CHECK PLAYER COUNT
 
 def check_player_count(player_count) :
     if player_count < 5:
-        print ("❌ Not enough players. Get 5 players to start the game")
+        print ("❌ Not enough players. Get minimum of 5 players to start the game")
 
         # Return False, inform the systems that condition is FALSE and NOT MET, and the FALSE output can be used because of the return statement
         return False
 
-    elif player_count <= 7:
-        print (f"Entering to the game with {player_count} players...")
 
-        # Return True, inform the systems that condition is TRUE and MET, and the TRUE output can be used because of the return statement
+    elif player_count > 7:
+        print ("❌ Too many players. The game can only support 5-7 players for now.")
+        return False
+
+    return True
+
+##############################################################################
+# TRY AGAIN
+
+def try_again ():
+
+    input_tryagain = str(input("Try again? Type [Y] for YES or [N] for NO: "))
+
+    if input_tryagain.upper() == "Y":
         return True
 
-    else:
-        print ("❌ Not supported yet. 8+ cannot be played yet")
-
-        # Return False, inform the systems that condition is FALSE and NOT MET, and the FALSE output can be used because of the return statement
+    elif input_tryagain.upper() == "N":
+        print ("Exiting the system ...")
         return False
 
-input_checkplayercount = int(input("Enter player count: "))
-check_player_count (input_checkplayercount)
-
-##############################################################################3
-# Checking the number of wolves
-
-def wolf_counter (player_count) :
-    print ("Playing with ...")
-    if player_count < 5:
-        print ("❌ Not enough players. Get 5 players to start the game")
-
-    elif player_count >= 5 and player_count <=6:
-        print (f"{player_count-1} villagers : 1 werewolf")
-
-        # Return 1 wolf
-        wolf = 1
-        return wolf
-
-    elif player_count == 7:
-        print (f"{player_count-2} villagers : 2 werewolves")
-        
-        # Return 1 wolf
-        wolf = 2
-        return wolf
-
     else:
-        print (f"{player_count} player(s) is not supported yet.")
+        print ("Oops! That was not a valid character.")
+        return try_again () 
+    
+##############################################################################
+# WOLF COUNTER
 
-wolf_counter (input_checkplayercount)
+def wolfcounter (playercount):
+    if playercount == 5 or playercount == 6:
+        wolfcount = 1
+        return wolfcount
+    
+    elif playercount == 7:
+        wolfcount = 2
+        return wolfcount
 
-##############################################################################3
-# Display the correct roles
+##############################################################################
+# ROLE IDENTIFICATION AND PRINTING
 
-def role_config (player_count) :
-    print ("Available Roles:")
-    if player_count < 5:
-        print ("❌ Not enough players. Get 5 players to start the game")
 
-    elif player_count == 5:
-        print (roles_for_5players)
+def role_identification(playercount, wolfcount):
+    villagers = min_roles.copy()
+    wolf = []
 
-    elif player_count == 6:
-        print (roles_for_6players)
+    additional_villagers = playercount - len(min_roles) - wolfcount
 
-    elif player_count == 7:
-        print (roles_for_7players)
+    #Add Villager
+    for everyadditionalvillage in range (additional_villagers):
+        villagers.append("- 👨‍🌾 Villager")
 
-    else:
-        print (f"{player_count} player(s) is not supported yet.")
+    #Add Werewolf
+    for everyadditionalwerewolf in range (wolfcount):
+        wolf.append("- 🐺 Werewolf") 
 
-role_config (input_checkplayercount)
+    return villagers, wolf
+
+##############################################################################
+# Game Setup
+def gamesetup ():
+    while True:
+        try:
+            input_playercount = int(input("Enter player count:"))
+
+            
+            
+            if check_player_count (input_playercount):
+                print ("Entering to the game ... ")
+
+                print ("Counting the number of wolf ...")
+                wolfcount = wolfcounter (input_playercount)
+
+                print ("Identifying the roles ...  ")
+                villagers, wolf = role_identification(input_playercount, wolfcount)
+
+                print ("Entering the game with ...")
+                print (f"Villager: {len(villagers)} | Werewolf {len(wolf)}\n")
+
+                print ("Roles:")
+                for item_no, role in enumerate(villagers + wolf, start = 1):
+                #"enumerate" lets you loop through a list while keeping track of both the item and its number (index) at the same time
+                    
+                    print (f"{item_no}. {role}") 
+
+                break
+
+            if not try_again ():
+                break
+
+        except ValueError:
+            print ("Oops! That was not a valid number.")
+            
+            if not try_again ():
+                break
+
+
+
+gamesetup ()
