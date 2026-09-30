@@ -5,7 +5,7 @@ coffee = 50
 
 def calculate_expenses(*expense_items):
     total = 0
-    for x in (expense_items):
+    for x in expense_items:
         total = total + x
     return total
 
