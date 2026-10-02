@@ -1,12 +1,21 @@
 class Person:
     def __init__(self, name):
         self.name = name
-        print (f"Your name is {self.name}")
+
+    def introduce (self):
+        print (f"Hi! I am {self.name}")
 
 
-name = input(str("Enter your name: "))
-personOne = Person(name)
+listOfPeople = []
+
+for name in range(5):
+    name = input(str("Name: "))
+    personToCreate = Person (name)
+    listOfPeople.append(personToCreate)
+
+print (listOfPeople)
+#Output: <__main__.Person object at 0x00000297E8E88590>, <__main__.Person object at 0x00000297E8E78550>, <__main__.Person object at 0x00000297E8E78690>
 
 
-
-nameList = ["Gelo", "Karen", "Wyne"]
+for everyname in listOfPeople:
+    everyname.introduce()
