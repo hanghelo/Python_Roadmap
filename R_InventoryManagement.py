@@ -1,3 +1,5 @@
+
+
 # Parent Class - Product
 class Product ():
 
@@ -40,6 +42,23 @@ class FoodAndBevItem (Product):
 
 
 ##############################
+# Defininig Inventory Categories
+inventoryCategory = ["Medicine Category", "Electornic Category", "Food and Beverages "]
+
+def invCat (inventoryCategory):
+    for i, category in enumerate(inventoryCategory):
+        print (f"[{i+1}] - {category} ")
+
+
+# Printing Inventory Items
+inventory = []
+
+def invItems (inventory):
+    for i, inventoryItems in enumerate(inventory):
+        print (f"[{i+1}] - {inventoryItems} ")
+
+##############################
+# Try Again
 def tryAgain ():
 
     input_tryAgain = str(input("Try Again? Type [Y] for Yes or [N] for No: "))
@@ -57,7 +76,7 @@ def tryAgain ():
 
 ################################
 
-inventory = []
+
 
 #1. Add 
 def addInventory ():
@@ -65,9 +84,8 @@ def addInventory ():
             f"\nTo add new item, please type below the item category""")
     print ()
 
-    print ("[1] - Medicine Item")
-    print ("[2] - Electronic Item")
-    print ("[3] - Food and Beverage Item")
+    #Print Inventory Category
+    invCat (inventoryCategory)
 
     itemCategory = int(input("Enter category number: "))
 
@@ -122,7 +140,30 @@ def addInventory ():
         print (f"{foodandbev.name} is created")
     else:
         print ("Invalid Category!")
-        tryAgain ()
+
+#2. Remove Inventory 
+def removeInventory (inventory):
+    print (f"""Removing a existing inventory item ...
+            f"\nTo remove an item, please type below the item category""")
+    print ()
+
+    # Printing Categories
+    invCat (inventoryCategory)
+
+    # Asking what category
+    itemCategory = int(input("Enter category number: "))
+    print (f"Entering cateogry {itemCategory}")
+
+    # Printing available items within the category
+
+    
+
+    # Accessing Category
+
+
+    
+
+    itemToRemove = str(input("Enter item name to remove: "))
 
 
 
